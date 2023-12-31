@@ -1,0 +1,10 @@
+-- ID, HOST_ID >= 2 이상 / ID순 정렬
+
+SELECT ID, NAME, HOST_ID
+FROM PLACES
+WHERE HOST_ID IN (SELECT HOST_ID
+                FROM PLACES
+                GROUP BY HOST_ID
+                HAVING COUNT(DISTINCT ID) >= 2)
+ORDER BY ID 
+
