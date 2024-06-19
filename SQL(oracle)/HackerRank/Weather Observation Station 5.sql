@@ -1,0 +1,14 @@
+-- 길이순, 알파벳 순 정렬 
+-- first, last value
+
+SELECT *
+FROM (SELECT CITY, LENGTH(CITY) 
+            FROM STATION
+            ORDER BY LENGTH(CITY) DESC, CITY)
+WHERE ROWNUM = 1
+UNION
+SELECT *
+FROM (SELECT CITY, LENGTH(CITY) 
+            FROM STATION
+            ORDER BY LENGTH(CITY), CITY)
+WHERE ROWNUM = 1;
