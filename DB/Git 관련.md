@@ -1,31 +1,59 @@
 
+> **원격 저장소(repository) 관련**
+---
+```C
+git remote -v // 원격 저장소 목록
+git remote add <저장소 이름> <url> //
+git remote rename <이전 이름> <새 이름> // 원격저장소 이름 변경
+git remote remove <저장소 이름> // 원격 저장소 삭제
+```
 
-- master랑 branch에서 각각 작업해서 merge 안될 때
-	- git merge [브랜치] --no-ff
-	- git merge 후 branch(현재) 다시 pull하고 push하기
+- **fork**
+	: 원본 소스를 다운받아 개발하는 방식
+	: *원본 소스에 <u>pull request</u>할 수 있다는 점에서 일반 clone/branch와는 다르다
 
 
-- fetch
-	- 원격 History를 가져오는 것
+- **upstream** (상류)
+	: 원격 저장소에 있는 <u>변경 사항</u>을 가져오는 기능
+	: [시스템 repository] --(fork)--> [내 repository ]--(pull)--> [Local 환경]
+     upstream                                 origin                            기준
+``` C
+git fetch upstream // upstream 원격 저장소의 변경사항을 로컬 저장소로 가져온다.
+git fetch upstream <브랜치> // upstream의 특정 브랜치의 내용만 가져온다.
+```
 
 
-- merge
+- **fetch**
+	: 원격 레포지토리의 History를 가져오는 것
+``` C
+git fetch <원격 저장소 이름> <브랜치 이름> // 원격 저장소(+특정 브랜치)의 커밋,브랜치,태그 History를 로컬 저장소로 가져온다.
+```
+	: branch 속성의 경우 대형 프로젝트 개발시 수많은 branch를 확인하며 개발하지 않기 때문에 필요하다.
+	
+
+
+---
+
+##### commit 관련
+
+- **merge**
 	- fastforward
-		- 분기점에서 수정된 사항이 
+		: 분기점에서 수정된 사항이 
+	- 에러 관련
+		- master랑 branch에서 각각 작업해서 merge 안될 때
+			- git merge [브랜치] --no-ff
+			- git merge 후 branch(현재) 다시 pull하고 push하기
 
 
-- fork
-	- 원본 소스를 다운받아 개발하는 방식 (원본 소스에 pull request할 수 있다는 점에서 일반 clone/branch와는 다르다)
-
-- rebase
-	- brach의 base(분기 시작점)를 바꾸는 방법
-	- 강제 push가 동반되는 방법으로 사용에 주의
+- **rebase**
+	: brach의 base(분기 시작점)를 바꾸는 방법
+	: 강제 push가 동반되는 방법으로 사용에 주의
 
 
 
 > **commit 수정**
-- ---
-- amend
+---
+- **amend**
 	- 이미 올린 commit에 추가로 수정을 하는 방법
 	- commit id가 변경됨
 	- 이미 push한 경우, 
@@ -61,6 +89,7 @@ git restore <file name>
 git restore --source <commit>
 ```
 
+
 - **revert**
 	- 되돌아간 상태에 대한 (그 시점을 대신하는) 새로운 커밋을 생성한다.
 	- 기존 커밋을 지우고 그 커밋을 대체할 새로운 커밋 생성
@@ -85,10 +114,3 @@ git reset --mixed
 # 3. 작업 디렉토리, 스테이지, commit 모두 되돌리기
 git reset --hard
 ```
-
-
-
-
-> SSH(Secure Shell)
-- Https(id/pw)와 달리 공개키/비밀키를 사용하는 방식 (서버: 자물쇠 / 로컬: 열쇠)
-
