@@ -1,0 +1,4 @@
+- PLSQL 실행 시 DDL은 직접 실행할 수 없음, DML은 OK
+
+
+- MERGE INTO 문에서 USING절에 있는 컬럼은 UPDATE 불가
