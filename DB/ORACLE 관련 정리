@@ -2,3 +2,7 @@
 
 
 - MERGE INTO 문에서 USING절에 있는 컬럼은 UPDATE 불가
+
+
+- != NULL vs IS NOT NULL
+  - !=는 NULL 연산자로 잡히지 않는다.
