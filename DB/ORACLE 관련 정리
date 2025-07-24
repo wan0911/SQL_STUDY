@@ -6,3 +6,6 @@
 
 - != NULL vs IS NOT NULL
   - !=는 NULL 연산자로 잡히지 않는다.
+
+
+- 최상단 N개 출력: FETCH FIRST 1 ROWS ONLY 이용 가능
